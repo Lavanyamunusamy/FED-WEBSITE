@@ -1,0 +1,117 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group button {
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #555;
+        }
+        .blog-posts {
+            margin-top: 2rem;
+        }
+        .blog-post {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        .blog-post h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Travel Blog</h1>
+    </header>
+    <main>
+        <section>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Enter blog title">
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea id="content" rows="5" placeholder="Enter blog content"></textarea>
+            </div>
+            <div class="form-group">
+                <button onclick="addBlogPost()">Add Blog Post</button>
+            </div>
+        </section>
+        <section class="blog-posts" id="blog-posts">
+            <h2>Blog Posts</h2>
+        </section>
+    </main>
+    <script>
+        function addBlogPost() {
+            const titleInput = document.getElementById('title');
+            const contentInput = document.getElementById('content');
+            const blogPostsSection = document.getElementById('blog-posts');
+
+            const title = titleInput.value;
+            const content = contentInput.value;
+
+            if (title && content) {
+                const blogPost = document.createElement('div');
+                blogPost.className = 'blog-post';
+                blogPost.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+
+                blogPostsSection.appendChild(blogPost);
+
+                // Clear input fields
+                titleInput.value = '';
+                contentInput.value = '';
+            } else {
+                alert('Please fill in both the title and content fields.');
+            }
+        }
+    </script>
+</body>
+</html>
+
